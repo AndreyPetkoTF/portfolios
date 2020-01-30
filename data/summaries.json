@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "summary 1",
+        "description": "summary 1 description",
+        "experience_in_years": 5,
+        "previous_companies": [
+            "Google",
+            "Facebook"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "summary 2",
+        "description": "summary 2 description",
+        "experience_in_years": 10,
+        "previous_companies": [
+            "Google",
+            "Amazon"
+        ]
+    }
+]

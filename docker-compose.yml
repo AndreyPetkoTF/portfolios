@@ -1,0 +1,52 @@
+version: '3.3'
+services:
+  nginx:
+    image: webdevops/nginx
+    hostname: nginx
+    restart: unless-stopped
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      WEB_PHP_SOCKET: php-fpm:9000
+    ports:
+      - "80:80/tcp"
+    volumes:
+      - "./:/app"
+      - "composer:/app/vendor"
+    depends_on:
+      - php-fpm
+      - composer
+
+  php-fpm:
+    image: webdevops/php-dev:7.2
+    hostname: php-fpm
+    volumes:
+      - "./:/app"
+      - "composer:/app/vendor"
+    working_dir: '/app'
+    depends_on:
+      - mysql
+      - composer
+
+  composer:
+    restart: 'no'
+    image: composer:1.8.5
+    command: install --ignore-platform-reqs
+    working_dir: /app
+    volumes:
+      - "./:/app"
+      - "composer:/app/vendor"
+
+  mysql:
+    image: mysql:5.7
+    hostname: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: woody
+      MYSQL_USER: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+
+volumes:
+  composer:

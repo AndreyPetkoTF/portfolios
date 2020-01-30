@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "positions 1 title",
+        "salary": 2000,
+        "minimal_experience_in_years": 6,
+        "company_name": "Uber"
+    },
+    {
+        "id": 2,
+        "title": "positions 2 title",
+        "salary": 3000,
+        "minimal_experience_in_years": 5,
+        "company_name": "Google"
+    }
+]
